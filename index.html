@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Appointment Booking</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+header {
+    background-color: #090a0a;
+    color: white;
+    padding: 1em;
+    text-align: center;
+}
+
+.container {
+    padding: 2em;
+    text-align: center;
+}
+
+h2, h3 {
+    color: #030303;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1em 2em;
+    margin-top: 1em;
+    background-color: #090909;
+    color: white;
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.btn:hover {
+    background-color: #48c3ca;
+}
+
+.card, .treatment-card, .doctor-card {
+    display: inline-block;
+    margin: 1em;
+    text-align: center;
+    position: relative;
+}
+
+.card img, .treatment-card img, .doctor-card img {
+    width: 90px;
+    height: 90px;
+    border-radius: 0%;
+    display: block;
+    margin: 0 auto;
+}
+
+.card label, .treatment-card label {
+    display: block;
+    padding: 1em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.card label:hover, .treatment-card label:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+.hidden {
+    display: none;
+}
+
+.form-group {
+    margin: 1em 0;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group input[type="number"] {
+    width: 100%;
+    padding: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+@media (max-width: 600px) {
+    .card, .treatment-card, .doctor-card {
+        display: block;
+        margin: 0.5em auto;
+    }
+}
+
+.treatment-card {
+    width: 18%;
+    margin: 0.5em;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1em;
+}
+
+.treatment-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.doctors-page-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.doctor-card {
+    display: flex;
+    align-items: center;
+    margin: 1em auto;
+    text-align: center;
+    justify-content: center;
+}
+
+.doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.doctor-card input[type="radio"] {
+    margin-right: 0.5em;
+}
+
+.page-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+}
+
+.page-buttons button {
+    margin: 0 1em;
+}
+
+.doctor-card {
+    display: flex;
+    align-items: center;
+    margin: 1em auto;
+    text-align: left;
+    justify-content: center;
+}
+
+.doctor-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-right: 1em;
+}
+
+.doctor-card input[type="radio"] {
+    margin-right: 0.5em;
+}
+
+#appointment-page {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Doctor Appointment Booking</h1>
+    </header>
+
+    <!-- Home Page -->
+    <main id="home-page" class="container">
+        <br><br><br><br><br><br><br><br><br><h2>Book Your Appointment</h2>
+        <a href="#" class="btn" onclick="showPage('doctors-page')">Book Now</a>
+    </main>
+
+    <!-- Doctors Page -->
+    <main id="doctors-page" class="container hidden">
+        <h1>Our List of Doctors</h1>
+        <div id="doctor-list">
+            <div class="card">
+                <img src="https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-young-afro-professional-doctor-png-image_10148632.png" alt="Dr. Steve">
+                <br><label>Dr. Steve</label>
+            </div>
+            <div class="card">
+                <img src="https://media.istockphoto.com/id/528442293/photo/the-doctor-will-see-you-now.jpg?s=612x612&w=0&k=20&c=ZpTbnBowinhEWnns9cTYACq0RTmFqoSV4suOBjdW_Wo=" alt="Dr. Kristina">
+                <br><label>Dr. Kristina</label>
+            </div>
+            <div class="card">
+                <img src="https://previews.123rf.com/images/stocking/stocking1304/stocking130400146/19094269-portrait-of-an-handsome-young-doctor.jpg" alt="Dr. Harry">
+                <br><label>Dr. Harry</label>
+            </div>
+            <div class="card">
+                <img src="https://thumbs.dreamstime.com/b/young-doctor-standing-isolated-white-background-26606786.jpg" alt="Dr. Emily">
+                <br><label>Dr. Emily </label>
+            </div>
+            <div class="card">
+                <img src="https://ddcorlando.com/wp-content/uploads/2020/01/beautiful-young-female-doctor-looking-camera-office_1301-7781.jpg" alt="Dr. Sarah">
+                <br><label>Dr. Sarah</label>
+            </div>
+            <div class="card">
+                <img src="https://s2-ug.ap4r.com/image-aigc-article/seoPic/origin/fb3a41c7c87d6dbca70fd736aa46b3a5b4e4cf96.png" alt="Dr. David">
+                <br><label>Dr. David</label>
+            </div><br>
+            <div class="card">
+                <img src="https://pngimg.com/d/doctor_PNG16041.png" alt="Dr. Brooks">
+                <br><label>Dr. Brooks</label>
+            </div>
+            <div class="card">
+                <img src="https://www.shutterstock.com/image-photo/beautiful-female-doctor-holding-clipboard-260nw-151595504.jpg" alt="Dr. Patricia">
+                <br><label>Dr. Patricia</label>
+            </div>
+            <div class="card">
+                <img src="https://i.pinimg.com/736x/2d/58/51/2d58514526367586f5d52421f040ea3f.jpg" alt="Dr. Robert">
+                <br><label>Dr. Robert</label>
+            </div>
+            <div class="card">
+                <img src="https://thumbs.dreamstime.com/b/berautiful-brunette-indian-happy-doctor-woman-10698488.jpg" alt="Dr. Laura">
+                <br><label>Dr. Laura</label>
+            </div>
+            <div class="card">
+                <img src="https://st.depositphotos.com/2702761/3304/i/450/depositphotos_33044395-stock-photo-doctor-smiling.jpg" alt="Dr. Martin">
+                <br><label>Dr. Martin</label>
+            </div>
+            <div class="card">
+                <img src="https://st.depositphotos.com/2702761/3313/i/450/depositphotos_33138301-stock-photo-doctor-with-her-arms-crossed.jpg" alt="Dr. Barbara">
+                <br><label>Dr. Barbara</label>
+            </div><br>
+            <div class="card">
+                <img src="https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843" alt="Dr. William">
+                <br><label>Dr. William</label>
+            </div>
+            <div class="card">
+                <img src="https://thumbs.dreamstime.com/b/indian-female-medical-doctor-portrait-uniform-hand-holding-test-report-standing-white-background-81003009.jpg" alt="Dr. Olivia">
+                <br><label>Dr. Olivia</label>
+            </div>
+            <div class="card">
+                <img src="https://png.pngtree.com/png-vector/20240220/ourlarge/pngtree-male-doctor-photo-png-image_11755264.png" alt="Dr. Richard">
+                <br><label>Dr. Richard</label>
+            </div>
+            <div class="card">
+                <img src="https://static.vecteezy.com/system/resources/previews/026/925/668/non_2x/ai-generative-head-shot-smiling-young-indian-female-doctor-physician-in-white-uniform-with-stethoscope-using-smartphone-standing-in-medical-office-nurse-or-therapist-typing-and-looking-at-phone-screen-photo.jpg" alt="Dr. Sophia">
+                <br><label>Dr. Sophia</label>
+            </div>
+            <div class="card">
+                <img src="https://img.freepik.com/free-photo/portrait-young-doctor-hospital_23-2148352012.jpg" alt="Dr. Joseph">
+                <br><label>Dr. Joseph</label>
+            </div>
+            <div class="card">
+                <img src="https://st.depositphotos.com/3662505/5113/i/450/depositphotos_51131735-stock-photo-doctor-indian.jpg" alt="Dr. Nancy">
+                <br><label>Dr. Nancy</label>
+            </div>
+        </div>
+        <button class="btn" onclick="showPage('home-page')">Back</button>
+        <button class="btn" onclick="showPage('specialty-page')">Next</button>
+    </main>
+
+   <!-- Specialty Page -->
+   <main id="specialty-page" class="container hidden">
+    <h1>Choose your Treatment Type</h1>
+    <form id="specialty-selection-form">
+        <div class="treatment-card">
+            <img src="https://cdn.pixabay.com/photo/2024/01/05/22/02/ai-generated-8490211_640.jpg" alt="Cardiology">
+            <h3>Cardiology</h3>
+            <input type="radio" id="cardio" name="specialty" value="Cardiology">
+            <label for="cardio">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://orthoneuro.com/wp-content/uploads/2023/02/when-to-see-a-doc-for-knee-pain-scaled.jpg-1024x683.webp" alt="Orthopedics">
+            <h3>Orthopedics</h3>
+            <input type="radio" id="ortho" name="specialty" value="Orthopedics">
+            <label for="ortho">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://img.freepik.com/free-photo/closeup-portrait-beautiful-woman-during-cosmetology-therapy-beauty-salon-professional-dermatology-procedures-lifting-rejuvenation-modern-devices-healthcare_197531-2785.jpg" alt="Dermatology">
+            <h3>Dermatology</h3>
+            <input type="radio" id="dermo" name="specialty" value="Dermatology">
+            <label for="dermo">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://www.shutterstock.com/shutterstock/photos/1907619667/display_1500/stock-photo-human-brain-stimulation-or-activity-with-neuron-close-up-d-rendering-illustration-neurology-1907619667.jpg" alt="Neurology">
+            <h3>Neurology</h3>
+            <input type="radio" id="neuro" name="specialty" value="Neurology">
+            <label for="neuro">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://media.istockphoto.com/id/1406744414/photo/thyroid-gland.jpg?s=612x612&w=0&k=20&c=xz7mKEe4MO8U7SDtLz_TznGbAWtfu3ycgR_BKjb3zFI=" alt="Endocrinology">
+            <h3>Endocrinology</h3>
+            <input type="radio" id="endo" name="specialty" value="Endocrinology">
+            <label for="endo">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://www.medicaltrusthospital.com/uploads/images/Psychiatry.jpg" alt="Psychiatry">
+            <h3>Psychiatry</h3>
+            <input type="radio" id="psychiatry" name="specialty" value="Psychiatry">
+            <label for="psychiatry">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://media.istockphoto.com/id/508509000/photo/professional-pediatrician-examining-infant.jpg?s=612x612&w=0&k=20&c=gp0CvpwTWX1rs19ZP8nLiAweUEgIij2tWXB56wVTOeE=" alt="Pediatrics">
+            <h3>Pediatrics</h3>
+            <input type="radio" id="pediatrics" name="specialty" value="Pediatrics">
+            <label for="pediatrics">Select</label>
+        </div>
+        <div class="treatment-card">
+            <img src="https://media.istockphoto.com/id/530284279/photo/checking-blood-pressure.jpg?s=612x612&w=0&k=20&c=KJdCdv6vs7tva5BXefiF6MfKn2JHwo9iO25_h2CbqI8=" alt="General Medicine">
+            <h3>General Medicine</h3>
+            <input type="radio" id="general" name="specialty" value="General Medicine">
+            <label for="general">Select</label>
+        </div>
+        <br><br>
+        <button type="submit" class="btn">Show Doctors</button>
+    </form>
+</main>
+
+    <!-- Treatment Doctors Page -->
+    <main id="treatment-doctors-page" class="container hidden">
+        <h1>Choose Your Preferred Doctor</h1>
+        <div class="doctors-page-content">
+            <div id="treatment-doctor-list"></div>
+            <div class="page-buttons">
+                <button class="btn" onclick="showPage('specialty-page')">Back</button>
+                <button class="btn" onclick="showPage('appointment-page')">Next</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Appointment Page -->
+    <main id="appointment-page" class="container hidden">
+        <h1>Book Your Appointment</h1>
+        <form id="appointment-form">
+            <div class="form-group">
+                <label for="appointment-date">Select Appointment Date:</label>
+                <input type="date" id="appointment-date" name="appointment-date" required>
+            </div>
+            <div class="form-group">
+                <label for="appointment-time">Select Appointment Time:</label>
+                <input type="time" id="appointment-time" name="appointment-time" required>
+            </div>
+            <div class="form-group">
+                <label for="patient-name">Patient Name:</label>
+                <input type="text" id="patient-name" name="patient-name" required>
+            </div>
+            <div class="form-group">
+                <label for="patient-age">Patient Age:</label>
+                <input type="number" id="patient-age" name="patient-age" required>
+            </div>
+            <button type="submit" class="btn">Confirm Booking</button>
+        </form>
+    </main>
+
+    <!-- Confirmation Page -->
+    <main id="confirmation-page" class="container hidden">
+        <h1>Booking Confirmation</h1>
+        <div id="confirmation-details"></div>
+        <button class="btn" onclick="showPage('home-page')">Go to Home</button>
+    </main>
+
+    <script>
+        const doctors = {
+            'Cardiology': [
+        { name: 'Dr. Steve', image: 'https://png.pngtree.com/png-vector/20230928/ourmid/pngtree-young-afro-professional-doctor-png-image_10148632.png' },
+        { name: 'Dr. Kristina', image: 'https://media.istockphoto.com/id/528442293/photo/the-doctor-will-see-you-now.jpg?s=612x612&w=0&k=20&c=ZpTbnBowinhEWnns9cTYACq0RTmFqoSV4suOBjdW_Wo=' }
+    ],
+    'Orthopedics': [
+        { name: 'Dr. Harry', image: 'https://previews.123rf.com/images/stocking/stocking1304/stocking130400146/19094269-portrait-of-an-handsome-young-doctor.jpg' },
+        { name: 'Dr. Emily', image: 'https://thumbs.dreamstime.com/b/young-doctor-standing-isolated-white-background-26606786.jpg' }
+    ],
+    'Dermatology': [
+        { name: 'Dr. David', image: 'https://s2-ug.ap4r.com/image-aigc-article/seoPic/origin/fb3a41c7c87d6dbca70fd736aa46b3a5b4e4cf96.png' },
+        { name: 'Dr. Patricia', image: 'https://www.shutterstock.com/image-photo/beautiful-female-doctor-holding-clipboard-260nw-151595504.jpg' }
+    ],
+    'Neurology': [
+        { name: 'Dr. Robert', image: 'https://i.pinimg.com/736x/2d/58/51/2d58514526367586f5d52421f040ea3f.jpg' },
+        { name: 'Dr. Laura', image: 'https://thumbs.dreamstime.com/b/berautiful-brunette-indian-happy-doctor-woman-10698488.jpg' }
+    ],
+    'Endocrinology': [
+        { name: 'Dr. Martin', image: 'https://st.depositphotos.com/2702761/3304/i/450/depositphotos_33044395-stock-photo-doctor-smiling.jpg' },
+        { name: 'Dr. Barbara', image: 'https://st.depositphotos.com/2702761/3313/i/450/depositphotos_33138301-stock-photo-doctor-with-her-arms-crossed.jpg' }
+    ],
+    'Psychiatry': [
+        { name: 'Dr. William', image: 'https://snibbs.co/cdn/shop/articles/What_are_the_Challenges_of_Being_a_Doctor_1001x665.jpg?v=1684314843' },
+        { name: 'Dr. Olivia', image: 'https://thumbs.dreamstime.com/b/indian-female-medical-doctor-portrait-uniform-hand-holding-test-report-standing-white-background-81003009.jpg' }
+    ],
+    'Pediatrics': [
+        { name: 'Dr. Richard', image: 'https://png.pngtree.com/png-vector/20240220/ourlarge/pngtree-male-doctor-photo-png-image_11755264.png' },
+        { name: 'Dr. Sophia', image: 'https://static.vecteezy.com/system/resources/previews/026/925/668/non_2x/ai-generative-head-shot-smiling-young-indian-female-doctor-physician-in-white-uniform-with-stethoscope-using-smartphone-standing-in-medical-office-nurse-or-therapist-typing-and-looking-at-phone-screen-photo.jpg' }
+    ],
+    'General Medicine': [
+        { name: 'Dr. Joseph', image: 'https://img.freepik.com/free-photo/portrait-young-doctor-hospital_23-2148352012.jpg' },
+        { name: 'Dr. Nancy', image: 'https://st.depositphotos.com/3662505/5113/i/450/depositphotos_51131735-stock-photo-doctor-indian.jpg' }
+    ]
+        };
+
+        const bookedAppointments = {};
+
+        function showPage(pageId) {
+            document.querySelectorAll('main').forEach(main => main.classList.add('hidden'));
+            document.getElementById(pageId).classList.remove('hidden');
+        }
+
+        function selectDoctor(name, image) {
+            sessionStorage.setItem('selectedDoctor', JSON.stringify({ name, image }));
+        }
+
+        document.getElementById('specialty-selection-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const selectedSpecialty = document.querySelector('input[name="specialty"]:checked').value;
+            const doctorsList = doctors[selectedSpecialty] || [];
+            const treatmentDoctorList = document.getElementById('treatment-doctor-list');
+
+            treatmentDoctorList.innerHTML = '';
+            doctorsList.forEach(doctor => {
+                const doctorCard = document.createElement('div');
+                doctorCard.className = 'doctor-card';
+                doctorCard.innerHTML = `
+                    <img src="${doctor.image}" alt="${doctor.name}">
+                    <input type="radio" name="doctor" value="${doctor.name}|${doctor.image}" id="${doctor.name.replace(/\s+/g, '-').toLowerCase()}">
+                    <label for="${doctor.name.replace(/\s+/g, '-').toLowerCase()}">${doctor.name}</label>
+                `;
+                treatmentDoctorList.appendChild(doctorCard);
+            });
+
+            showPage('treatment-doctors-page');
+        });
+
+        document.getElementById('treatment-doctor-list').addEventListener('change', function(e) {
+            if (e.target.name === 'doctor') {
+                const [name, image] = e.target.value.split('|');
+                selectDoctor(name, image);
+            }
+        });
+
+        document.getElementById('appointment-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const date = formData.get('appointment-date');
+            const time = formData.get('appointment-time');
+            const name = formData.get('patient-name');
+            const age = formData.get('patient-age');
+            const selectedDoctor = JSON.parse(sessionStorage.getItem('selectedDoctor'));
+
+            const appointmentKey = `${selectedDoctor.name}-${date}-${time}`;
+
+            if (bookedAppointments[appointmentKey]) {
+                alert('The selected doctor is already booked at this time. Please choose another time or doctor.');
+                return;
+            }
+
+            bookedAppointments[appointmentKey] = {
+                name: selectedDoctor.name,
+                image: selectedDoctor.image,
+                date,
+                time,
+                patientName: name,
+                patientAge: age
+            };
+
+            const confirmationDetails = document.getElementById('confirmation-details');
+            confirmationDetails.innerHTML = `
+                <img src="${selectedDoctor.image}" alt="Selected Doctor" style="width: 150px; height: 150px;">
+                <p>Doctor Name: ${selectedDoctor.name}</p>
+                <p>Doctor Appointment Date: ${date}</p>
+                <p>Doctor Appointment Time: ${time}</p>
+                <p>Patient Name: ${name}</p>
+                <p>Patient Age: ${age}</p>
+            `;
+
+            showPage('confirmation-page');
+        });
+
+        showPage('home-page');
+    </script>
+</body>
+</html>
